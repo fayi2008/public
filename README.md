@@ -9,4 +9,6 @@ distjs/distsjs
 
 swiper 版本 3.4
 
-public:
+public:一些简单的插件集合，基于jquery
+
+c#main.js：.net项目需要用到的方法
