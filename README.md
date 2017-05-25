@@ -36,7 +36,7 @@ PC为PC端初始化JS
          distjs 全压缩
 
      public:一些简单的插件集合，基于jquery，js引用和web里面一样的即可，css请引入不同目录的
-     c_main:.net项目需要用到的用户体系的方法,是用cookie
+     c_main:.net项目需要用到的用户体系的方法,使用cookie
 
 IP引入 下
 所有代码必须上传到GIT
