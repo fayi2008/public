@@ -4,6 +4,7 @@
         public更新成代工厂模式，可以兼容module，amd,普通模式调用,jquery调用
         c#main.js：添加window支持，但是依旧大部分依赖jquery
         添加M端例子：访问页面https://fayi2008.github.io/public/mindex.html?id=123
+        toSignin方法添加第二个参数，为跳转参数，空的时候默认 signin.html 有的时候 优先去url
 
 ==================================我是华丽的分割线==================================
 
@@ -23,7 +24,7 @@ web为手机端初始化部分JS
     public:一些简单的插件集合，可以兼容module，amd,普通模式调用
             调用方法 例：  plus.alert('xxx')
 
-    c#main.js：.net项目需要用到的用户体系的方法
+    c_main.js：.net项目需要用到的用户体系的方法，使用localstorge
 
 
 PC为PC端初始化JS
@@ -35,6 +36,7 @@ PC为PC端初始化JS
          distjs 全压缩
 
      public:一些简单的插件集合，基于jquery，js引用和web里面一样的即可，css请引入不同目录的
+     c_main:.net项目需要用到的用户体系的方法,是用cookie
 
 IP引入 下
 所有代码必须上传到GIT
