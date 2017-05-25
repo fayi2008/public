@@ -1,3 +1,9 @@
+2017.5.25
+更新
+    public更新成代工厂模式，可以兼容module，amd,普通模式调用
+    c#main.js：添加window支持，但是依旧大部分依赖jquery
+
+==================================我是华丽的分割线==================================
 web为手机端初始化部分JS
 
     distjs/distsjs
@@ -11,7 +17,8 @@ web为手机端初始化部分JS
 
     swiper 版本 3.4
 
-    public:一些简单的插件集合，基于jquery
+    public:一些简单的插件集合，可以兼容module，amd,普通模式调用
+            调用方法 例：  plus.alert('xxx')
 
     c#main.js：.net项目需要用到的用户体系的方法
 

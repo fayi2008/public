@@ -1,7 +1,7 @@
 (function ($) {
 
     //跳转去登录
-    $.toSignin = function (back) {
+    $.toSignin=window.toSignin = function (back) {
         var from = back || (location.pathname + location.search);
 
         if ($.is_weixin()) {
@@ -13,31 +13,31 @@
     };
 
     //往ls里面放入用户信息
-    $.putUser = function (rs) {
+    $.putUser=window.putUser= function (rs) {
         localStorage['yes'] = $.base64encode(JSON.stringify(rs))
     };
 
     //不传参就是获取用户信息对象 传参获取单个用户信息
-    $.getUser = function (rs) {
+    $.getUser=window.getUser = function (rs) {
         return rs ? JSON.parse($.base64decode(localStorage['yes']))[rs] : JSON.parse($.base64decode(localStorage['yes']))
     };
     //清楚ls
-    $.clearUser = function () {
+    $.clearUser =window.clearUser= function () {
         localStorage.clear()
     };
     //更新用户信息
-    $.editUser = function (res, val) {
+    $.editUser =window.editUser= function (res, val) {
         var data = JSON.parse($.base64decode(localStorage['yes']));
         data[res] = val;
         $.putUser(data)
     };
 
     //保存LStoken
-    $.putToken = function (res) {
+    $.putToken =window.putToken= function (res) {
         localStorage['yesToken'] = $.base64encode(res.PhoneNumber + ':' + res.DynamicToken);
     };
     //检查是否登录，并且拼接head
-    $.checkUser = function () {
+    $.checkUser =window.checkUser= function () {
 
         if ($.is_weixin()) {
             var user = Cookies.getJSON('userInfo');
@@ -63,7 +63,25 @@
     };
 
     //倒计时
-    $.fn.CountDown = function () {
+    $.fn.countDown = function () {
+
+        $(this).each(function (index,item) {
+            var t = 60;
+            var timer = setInterval(function () {
+                if (t == 0) {
+                    item.html('获取验证码');
+                    item.removeClass('on');
+                    clearInterval(timer);
+                } else {
+                    item.html(t + '秒后重发');
+                    t--;
+                }
+
+            }, 1000)
+        })
+
+    };
+    $.CountDown=window.CountDown = function () {
 
         $(this).each(function (index,item) {
             var t = 60;
