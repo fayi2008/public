@@ -4,22 +4,22 @@
     $.toSignin=window.toSignin = function (back) {
         var from = back || (location.pathname + location.search);
 
-        if ($.is_weixin()) {
+        if (plus.is_weixin()) {
             window.location.replace('/WeiXin/Login' + (from ? ('?backUrl=' + from) : ''));
         } else {
 
-            window.location.replace('signin.html' + (from ? ('?from=' + $.base64encode(from)) : ''))
+            window.location.replace('signin.html' + (from ? ('?from=' + plus.base64encode(from)) : ''))
         }
     };
 
     //往ls里面放入用户信息
     $.putUser=window.putUser= function (rs) {
-        localStorage['yes'] = $.base64encode(JSON.stringify(rs))
+        localStorage['yes'] = plus.base64encode(JSON.stringify(rs))
     };
 
     //不传参就是获取用户信息对象 传参获取单个用户信息
     $.getUser=window.getUser = function (rs) {
-        return rs ? JSON.parse($.base64decode(localStorage['yes']))[rs] : JSON.parse($.base64decode(localStorage['yes']))
+        return rs ? JSON.parse(plus.base64decode(localStorage['yes']))[rs] : JSON.parse(plus.base64decode(localStorage['yes']))
     };
     //清楚ls
     $.clearUser =window.clearUser= function () {
@@ -27,22 +27,22 @@
     };
     //更新用户信息
     $.editUser =window.editUser= function (res, val) {
-        var data = JSON.parse($.base64decode(localStorage['yes']));
+        var data = JSON.parse(plus.base64decode(localStorage['yes']));
         data[res] = val;
         $.putUser(data)
     };
 
     //保存LStoken
     $.putToken =window.putToken= function (res) {
-        localStorage['yesToken'] = $.base64encode(res.PhoneNumber + ':' + res.DynamicToken);
+        localStorage['yesToken'] = plus.base64encode(res.PhoneNumber + ':' + res.DynamicToken);
     };
     //检查是否登录，并且拼接head
     $.checkUser =window.checkUser= function () {
 
-        if ($.is_weixin()) {
+        if (plus.is_weixin()) {
             var user = Cookies.getJSON('userInfo');
             if (user) {
-                user = JSON.parse($.base64decodes(user));
+                user = JSON.parse(plus.base64decodes(user));
                 $.putUser(user);
                 $.putToken(user);
                 Cookies.remove('userInfo', {path: '/'});
