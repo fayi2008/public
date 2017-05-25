@@ -29,12 +29,17 @@ $(function () {
                     submit_text: '确定',
                     cancel_text: '取消',
                     submit_bgcolor: '#ccc',
-                    submit_color: '#ccc',
+                    submit_color: '#000',
                     cancel_bgcolor: '#000',
-                    cancel_color: '#000',
+                    cancel_color: '#00ff00',
                     submit: function (e) {
+                        plus.oppo('确认回调')
+                        e.close()
+
                     },
                     cancel: function (e) {
+                        plus.oppo('取消回调')
+                        e.close()
                     }
                 })
             }
