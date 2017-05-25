@@ -1,7 +1,19 @@
-;(function (golden, $) {
+;(function (golden, factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        module.exports = factory(golden)
+    } else if (typeof define === "function" && define.amd) {
+        define('plus', [], function () {
+            return factory(golden);
+        });
+    } else{
+        window.plus = factory(golden)
+    }
 
+
+})(window, function () {
+    var plus = {}
     //判断是否为微信
-    window.is_weixin=$.is_weixin=function() {
+    plus.is_weixin = function () {
         var ua = navigator.userAgent.toLowerCase();
         if (ua.match(/micromessenger/i) == "micromessenger") {
             return true;
@@ -125,7 +137,7 @@
     }
 
     //弹窗调用
-    $.alert = function (option, title, callback) {
+    plus.alert = function (option, title, callback) {
 
         if (typeof option != 'object' && typeof option == 'string') {
 
@@ -143,7 +155,7 @@
 
     }
 
-    
+
     // $.alert('asdasd','title',function (e) {
     //     e.close()
     // })
@@ -163,7 +175,7 @@
     // })
 
     //获取URL上参数
-    $.getUrlParam = $._getUrlParam = function (name) {
+    plus.getUrlParam = $._getUrlParam = function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]);
@@ -171,7 +183,7 @@
     }
 
 
-    $.set_font = function (size) {
+    plus.set_font = function (size) {
 
         // 计算、转换布局单位
         var html = document.getElementsByTagName('html')[0];
@@ -194,7 +206,7 @@
     }
 
     //添加全页load
-    $.ADDLOAD = function () {
+    plus.ADDLOAD = function () {
         var html = '<div class="new-loading">' +
             '<ul class="small-loading">' +
             '<li></li>' +
@@ -213,11 +225,11 @@
     }
 
     //移除load
-    $.RMLOAD = function () {
+    plus.RMLOAD = function () {
         $('.new-loading').remove()
     }
     //页面浮动内容框
-    $.oppo = function (msg, time, callback) {
+    plus.oppo = function (msg, time, callback) {
 
         var html = '<div class="oppo">' + msg + '</div>';
         $('body').append(html);
@@ -232,25 +244,23 @@
     }
 
     //删除HTML里面标签
-    $.DELHTML = function (str) {
+    plus.DELHTML = function (str) {
         return str ? str.replace(/<[^>].*?>/g, "") : str;
     }
 
     //base64加密
-    $.base64encode=function (str) {
+    plus.base64encode = function (str) {
         var encryptedHexStr = CryptoJS.enc.Utf8.parse(str);
         var words = CryptoJS.enc.Base64.stringify(encryptedHexStr);
         console.log(words)
         return words
     }
     //base64解密
-    $.base64decode=function (str) {
+    plus.base64decode = function (str) {
         var words = CryptoJS.enc.Base64.parse(str);
         words = words.toString(CryptoJS.enc.Utf8);
         console.log(words)
         return words
     }
 
-
-
-})(window, jQuery);
+});
