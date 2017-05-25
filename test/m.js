@@ -21,7 +21,7 @@ $(function () {
                     e.close()
                 })
             },
-            alert1:function () {
+            alert2:function () {
                 plus.alert({
                     cf: 1,//0为无取消，1为有取消
                     title: '提示',
