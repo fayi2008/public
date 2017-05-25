@@ -66,12 +66,15 @@ $(function () {
                 if(id){
                     plus.oppo('id:'+id)
                 }else{
-
+                    $.oppo('请现在URL上拼接上 ?id=1')
                 }
 
             },
             geturlo:function () {
-                
+                var obj=plus.getUrlObject('https://fayi2008.github.io/public/mindex.html?id=123&text=333')//不传参，则取当前URL
+                if(id){
+                   console.log(obj)
+                }
             }
         }
     })
