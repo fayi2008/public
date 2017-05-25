@@ -207,9 +207,10 @@ a:visited {
 }
 
 .yalert-box {
-    top: 20vh;
-    width: 90vw;
-    left: 5vw;
+    top: 200px;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
     box-sizing: border-box;
     background-color: #fff;
     position: fixed;
@@ -254,16 +255,16 @@ a:visited {
 }
 
 .oppo {
-    width: 80%;
+    width: 70%;
     background: rgba(0, 0, 0, 0.8);
     box-sizing: border-box;
-    padding: 0.28rem 0.1rem;
+    padding: 10px 20px;
     position: fixed;
-    top: 50%;
-    margin-top: -0.5rem;
-    left: 10%;
-    font-size: 0.3rem;
-    line-height: 0.44rem;
+    top: 50px;
+
+    left: 15%;
+    font-size: 14px;
+
     text-align: center;
     border-radius: 0.08rem;
     color: #fff;

@@ -15,6 +15,17 @@ web为手机端初始化部分JS
 
     c#main.js：.net项目需要用到的用户体系的方法
 
+
+PC为PC端初始化JS
+     distjs
+        内容为：
+            jQuery 1.11.3
+            cookies ：Cookies.getJSON()
+            base64基础库
+         distjs 全压缩
+
+     public:一些简单的插件集合，基于jquery，js引用和web里面一样的即可，css请引入不同目录的
+
 IP引入 下
 所有代码必须上传到GIT
 

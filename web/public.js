@@ -33,6 +33,8 @@
             content: '',
             submit_text: '确定',
             cancel_text: '取消',
+            submit_color: '#fff',
+            cancel_color: '#fff',
             submit: function (e) {
             },
             cancel: function (e) {
@@ -63,10 +65,13 @@
         if (opts.cf) {
             y_quxiao = _this.createHTML('a', 'yalert-box-submit', opt.cancel_text, btn)
             y_queding = _this.createHTML('a', 'yalert-box-submit', opt.submit_text, btn)
+            y_quxiao.style.backgroundColor = opt.cancel_color
+            y_queding.style.backgroundColor = opt.submit_color
 
         } else {
             y_queding = _this.createHTML('a', 'yalert-box-submit', opt.submit_text, btn)
             y_queding.style.width = '100%'
+            y_queding.style.backgroundColor = opt.submit_color
         }
 
         _this.htmls.appendChild(btn)
