@@ -32,7 +32,7 @@
         _this.close = function () {
             document.body.removeChild(_this.newhtml)
         }
-        return _this
+        return _this;
 
     }
     //弹窗（新）
