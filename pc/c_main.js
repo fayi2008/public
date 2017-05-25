@@ -1,38 +1,34 @@
 (function ($) {
 
     //跳转去登录
-    $.toSignin=window.toSignin = function (back) {
+    $.toSignin = window.toSignin = function (back,url) {
         var from = back || (location.pathname + location.search);
 
-        if (plus.is_weixin()) {
-            window.location.replace('/WeiXin/Login' + (from ? ('?backUrl=' + from) : ''));
-        } else {
+        window.location.replace(url||'signin.html' + (from ? ('?from=' + plus.base64encode(from)) : ''))
 
-            window.location.replace('signin.html' + (from ? ('?from=' + plus.base64encode(from)) : ''))
-        }
     };
 
     //往ls里面放入用户信息
-    $.putUser=window.putUser= function (rs) {
-        Cookies.set('yes', plus.base64encode(JSON.stringify(rs)),{path:'/'})
+    $.putUser = window.putUser = function (rs) {
+        Cookies.set('yes', plus.base64encode(JSON.stringify(rs)), {path: '/'})
     };
 
     //不传参就是获取用户信息对象 传参获取单个用户信息
-    $.getUser=window.getUser = function (rs) {
-        var res=Cookies.getJSON('yes')
-        if(!res){
+    $.getUser = window.getUser = function (rs) {
+        var res = Cookies.getJSON('yes')
+        if (!res) {
             return false
         }
         return rs ? JSON.parse(plus.base64decode(res))[rs] : JSON.parse(plus.base64decode(res))
     };
     //清楚ls
-    $.clearUser =window.clearUser= function () {
-        Cookies.remove('yes', { path: '/' });
+    $.clearUser = window.clearUser = function () {
+        Cookies.remove('yes', {path: '/'});
     };
     //更新用户信息
-    $.editUser =window.editUser= function (rs, val) {
-        var res=Cookies.getJSON('yes')
-        if(!res){
+    $.editUser = window.editUser = function (rs, val) {
+        var res = Cookies.getJSON('yes')
+        if (!res) {
             return false
         }
         var data = JSON.parse(plus.base64decode(res));
@@ -41,13 +37,13 @@
     };
 
     //保存LStoken
-    $.putToken =window.putToken= function (rs) {
+    $.putToken = window.putToken = function (rs) {
 
         var res = plus.base64encode(rs.PhoneNumber + ':' + rs.DynamicToken);
-        Cookies.set('yesToken', res,{path:'/'})
+        Cookies.set('yesToken', res, {path: '/'})
     };
     //检查是否登录，并且拼接head
-    $.checkUser =window.checkUser= function () {
+    $.checkUser = window.checkUser = function () {
 
         if (plus.is_weixin()) {
             var user = Cookies.getJSON('userInfo');
@@ -75,7 +71,7 @@
     //倒计时
     $.fn.countDown = function () {
 
-        $(this).each(function (index,item) {
+        $(this).each(function (index, item) {
             var t = 60;
             var timer = setInterval(function () {
                 if (t == 0) {
@@ -91,9 +87,9 @@
         })
 
     };
-    $.CountDown=window.CountDown = function () {
+    $.CountDown = window.CountDown = function () {
 
-        $(this).each(function (index,item) {
+        $(this).each(function (index, item) {
             var t = 60;
             var timer = setInterval(function () {
                 if (t == 0) {

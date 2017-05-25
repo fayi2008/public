@@ -1,14 +1,14 @@
 (function ($) {
 
     //跳转去登录
-    $.toSignin=window.toSignin = function (back) {
+    $.toSignin=window.toSignin = function (back,url) {
         var from = back || (location.pathname + location.search);
 
         if (plus.is_weixin()) {
             window.location.replace('/WeiXin/Login' + (from ? ('?backUrl=' + from) : ''));
         } else {
 
-            window.location.replace('signin.html' + (from ? ('?from=' + plus.base64encode(from)) : ''))
+            window.location.replace(url||'signin.html' + (from ? ('?from=' + plus.base64encode(from)) : ''))
         }
     };
 
