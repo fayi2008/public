@@ -282,14 +282,12 @@
     plus.base64encode = function (str) {
         var encryptedHexStr = CryptoJS.enc.Utf8.parse(str);
         var words = CryptoJS.enc.Base64.stringify(encryptedHexStr);
-        console.log(words)
         return words
     }
     //base64解密
     plus.base64decode = function (str) {
         var words = CryptoJS.enc.Base64.parse(str);
         words = words.toString(CryptoJS.enc.Utf8);
-        console.log(words)
         return words
     }
 
