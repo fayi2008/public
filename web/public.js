@@ -7,6 +7,9 @@
         });
     } else{
         window.plus = factory(golden)
+        if(jQuery){
+            window.$=$.extend(window.$,factory(golden))
+        }
     }
 
 

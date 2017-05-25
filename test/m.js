@@ -51,15 +51,27 @@ $(function () {
             },
             save:function () {
                 $.putUser({Id:'000-00-000',name:'测试'})
-                $.oppo('更新完成，请查看localstorge')
+                plus.oppo('更新完成，请查看localstorge')
             },
             get:function () {
                 var id=$.getUser('Id')
-                $.oppo('获取ID'+id)
+                plus.oppo('获取ID'+id)
             },
             update:function () {
                 $.editUser('name','测试'+Math.random())
-                $.oppo('更新完成，请查看localstorge')
+                plus.oppo('更新完成，请查看localstorge')
+            },
+            geturl:function () {
+                var id=plus.getUrlParam('id')
+                if(id){
+                    plus.oppo('id:'+id)
+                }else{
+
+                }
+
+            },
+            geturlo:function () {
+                
             }
         }
     })
