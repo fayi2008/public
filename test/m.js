@@ -1,12 +1,12 @@
 $(function () {
-    plus.ADDLOAD()
+
     new Vue({
         el: '#main',
         data: {},
         mounted: function () {
 
             plus.set_font()
-            this.init()
+
         },
         methods: {
             addl: function () {
