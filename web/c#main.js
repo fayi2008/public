@@ -63,19 +63,23 @@
     };
 
     //倒计时
-    $.CountDown = function (obj) {
-        var t = 60;
-        var timer = setInterval(function () {
-            if (t == 0) {
-                obj.html('获取验证码');
-                obj.removeClass('on');
-                clearInterval(timer);
-            } else {
-                obj.html(t + '秒后重发');
-                t--;
-            }
+    $.fn.CountDown = function () {
 
-        }, 1000)
+        $(this).each(function (index,item) {
+            var t = 60;
+            var timer = setInterval(function () {
+                if (t == 0) {
+                    item.html('获取验证码');
+                    item.removeClass('on');
+                    clearInterval(timer);
+                } else {
+                    item.html(t + '秒后重发');
+                    t--;
+                }
+
+            }, 1000)
+        })
+
     };
 
 
