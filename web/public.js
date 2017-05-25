@@ -163,24 +163,6 @@
     }
 
 
-    // $.alert('asdasd','title',function (e) {
-    //     e.close()
-    // })
-    //
-    // $.alert({
-    //     cf: 1,
-    //     title: '提示',
-    //     content: '',
-    //     submit_text: '确定',
-    //     cancel_text: '取消',
-    //     submit: function (e) {
-    //         e.close()
-    //     },
-    //     cancel: function (e) {
-    //         e.close()
-    //     }
-    // })
-
     //获取URL上参数
     plus.getUrlParam  = function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");

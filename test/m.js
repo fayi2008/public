@@ -10,7 +10,7 @@ $(function () {
         },
         methods: {
             addl: function () {
-                plus.ADDLOAD()
+                plus.ADDLOAD()//$.ADDLOAD()也可
                 setTimeout(function () {
                     plus.RMLOAD()
                 },2000)
