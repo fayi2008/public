@@ -14,27 +14,37 @@
 
     //往ls里面放入用户信息
     $.putUser=window.putUser= function (rs) {
-        localStorage['yes'] = plus.base64encode(JSON.stringify(rs))
+        Cookies.set('yes', plus.base64encode(JSON.stringify(rs)),{path:'/'})
     };
 
     //不传参就是获取用户信息对象 传参获取单个用户信息
     $.getUser=window.getUser = function (rs) {
-        return rs ? JSON.parse(plus.base64decode(localStorage['yes']))[rs] : JSON.parse(plus.base64decode(localStorage['yes']))
+        var res=Cookies.getJSON('yes')
+        if(!res){
+            return false
+        }
+        return rs ? JSON.parse(plus.base64decode(res))[rs] : JSON.parse(plus.base64decode(res))
     };
     //清楚ls
     $.clearUser =window.clearUser= function () {
-        localStorage.clear()
+        Cookies.remove('yes', { path: '/' });
     };
     //更新用户信息
     $.editUser =window.editUser= function (res, val) {
-        var data = JSON.parse(plus.base64decode(localStorage['yes']));
+        var res=Cookies.getJSON('yes')
+        if(!res){
+            return false
+        }
+        var data = JSON.parse(plus.base64decode(res));
         data[res] = val;
         $.putUser(data)
     };
 
     //保存LStoken
     $.putToken =window.putToken= function (res) {
-        localStorage['yesToken'] = plus.base64encode(res.PhoneNumber + ':' + res.DynamicToken);
+
+        var res = plus.base64encode(res.PhoneNumber + ':' + res.DynamicToken);
+        Cookies.set('yesToken', res,{path:'/'})
     };
     //检查是否登录，并且拼接head
     $.checkUser =window.checkUser= function () {
@@ -50,7 +60,7 @@
 
         }
 
-        window.TOKEN = localStorage['yesToken'];
+        window.TOKEN = Cookies.get('yesToken');
         if (window.TOKEN) {
             $.ajaxSetup({
                 headers: {
