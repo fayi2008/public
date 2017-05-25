@@ -43,6 +43,7 @@ $(function () {
                     }
                 })
             },
+
             oppo:function () {
                 plus.oppo('取消回调',1,function () {
                     plus.oppo('消失回调')

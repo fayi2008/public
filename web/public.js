@@ -179,11 +179,34 @@
     // })
 
     //获取URL上参数
-    plus.getUrlParam = $._getUrlParam = function (name) {
+    plus.getUrlParam  = function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]);
         return ''
+    }
+
+    plus.getUrlObject=function (url) {
+        url=url||location.search
+        url=url.split('?')[1]||''
+
+        if(url){
+           var list=url.split('&')
+            if(list&&list.length) {
+                var object={}
+                for (var i = 0; i < list.length; i++) {
+                    var obj = list[i];
+                    object[obj.split('=')[0]]=obj.split('=')[1]
+                }
+                return object
+            }
+
+            return ''
+        }
+
+        return ''
+
+
     }
 
 
