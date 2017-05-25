@@ -1,7 +1,8 @@
 2017.5.25
 更新
-    public更新成代工厂模式，可以兼容module，amd,普通模式调用
+    public更新成代工厂模式，可以兼容module，amd,普通模式调用,jquery调用
     c#main.js：添加window支持，但是依旧大部分依赖jquery
+    添加M端例子：访问页面https://fayi2008.github.io/public/mindex.html?id=123
 
 ==================================我是华丽的分割线==================================
 
