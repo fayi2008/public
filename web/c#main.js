@@ -8,7 +8,7 @@
             window.location.replace('/WeiXin/Login' + (from ? ('?backUrl=' + from) : ''));
         } else {
 
-            window.location.replace(window.URL + 'signin.html' + (from ? ('?from=' + $.base64encode(from)) : ''))
+            window.location.replace('signin.html' + (from ? ('?from=' + $.base64encode(from)) : ''))
         }
     };
 
@@ -16,6 +16,7 @@
     $.putUser = function (rs) {
         localStorage['yes'] = $.base64encode(JSON.stringify(rs))
     };
+
     //不传参就是获取用户信息对象 传参获取单个用户信息
     $.getUser = function (rs) {
         return rs ? JSON.parse($.base64decode(localStorage['yes']))[rs] : JSON.parse($.base64decode(localStorage['yes']))
@@ -30,6 +31,7 @@
         data[res] = val;
         $.putUser(data)
     };
+
     //保存LStoken
     $.putToken = function (res) {
         localStorage['yesToken'] = $.base64encode(res.PhoneNumber + ':' + res.DynamicToken);
@@ -75,6 +77,7 @@
 
         }, 1000)
     };
+
 
     //根据接口返回 显示错误信息 或者 返回授权
     $(document).ajaxSuccess(function (event, xhr, settings) {

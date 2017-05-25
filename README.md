@@ -6,8 +6,8 @@ web为手机端初始化部分JS
         vuejs 2.3.3
         cookies ：Cookies.getJSON()
         base64基础库
-     distjs 已压缩 发布版本
-     distsjs vue未压缩 其他压缩 开发版本
+     distsjs 已压缩 发布版本
+     distjs vue未压缩，其他压缩 开发版本
 
     swiper 版本 3.4
 
@@ -15,7 +15,7 @@ web为手机端初始化部分JS
 
     c#main.js：.net项目需要用到的用户体系的方法
 
-
+IP引入 下
 所有代码必须上传到GIT
 
 关于页面：
@@ -26,7 +26,7 @@ web为手机端初始化部分JS
 
 关于JS：
     1、一定要写在jQuery初始化函数里面
-    $(function(){});   $(document).ready(function(){});  都可以
+    $(function(){});    都可以
 
     2、分段好JS，请务必写注释
     注释要求：
@@ -38,6 +38,7 @@ web为手机端初始化部分JS
     4、若可以请在结尾加上分号（不加也可以）
 
     5、发布版本，若JS比较大 请压缩，网上很多第三方压缩工具
+
 
     6、使用vue整个页面请只出现一个vue初始化，不要出现多个，用操作数据去操作
 
@@ -51,3 +52,5 @@ web为手机端初始化部分JS
 
 关于check：
     1、请务必自己完全走下流程，保证没JS报错等情况下提交测试
+
+BUG 提交以后业务逻辑BUG 流程卡住 奖金扣

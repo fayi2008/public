@@ -1,4 +1,4 @@
-(function (golden, $) {
+;(function (golden, $) {
 
     //判断是否为微信
     window.is_weixin=$.is_weixin=function() {
@@ -138,6 +138,24 @@
 
     }
 
+    
+    // $.alert('asdasd','title',function (e) {
+    //     e.close()
+    // })
+    //
+    // $.alert({
+    //     cf: 1,
+    //     title: '提示',
+    //     content: '',
+    //     submit_text: '确定',
+    //     cancel_text: '取消',
+    //     submit: function (e) {
+    //         e.close()
+    //     },
+    //     cancel: function (e) {
+    //         e.close()
+    //     }
+    // })
 
     //获取URL上参数
     $.getUrlParam = $._getUrlParam = function (name) {
@@ -230,4 +248,4 @@
 
 
 
-})(window, jQuery)
+})(window, jQuery);
