@@ -30,20 +30,20 @@
         Cookies.remove('yes', { path: '/' });
     };
     //更新用户信息
-    $.editUser =window.editUser= function (res, val) {
+    $.editUser =window.editUser= function (rs, val) {
         var res=Cookies.getJSON('yes')
         if(!res){
             return false
         }
         var data = JSON.parse(plus.base64decode(res));
-        data[res] = val;
+        data[rs] = val;
         $.putUser(data)
     };
 
     //保存LStoken
-    $.putToken =window.putToken= function (res) {
+    $.putToken =window.putToken= function (rs) {
 
-        var res = plus.base64encode(res.PhoneNumber + ':' + res.DynamicToken);
+        var res = plus.base64encode(rs.PhoneNumber + ':' + rs.DynamicToken);
         Cookies.set('yesToken', res,{path:'/'})
     };
     //检查是否登录，并且拼接head
