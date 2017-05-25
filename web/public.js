@@ -148,7 +148,7 @@
             var opt = {
                 title: title,
                 content: option,
-                submit: callback ? (typeof callback == 'function' ? callback() : callback) : ''
+                submit: callback
             }
 
             new _Alert(opt)
