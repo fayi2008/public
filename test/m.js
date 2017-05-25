@@ -72,7 +72,7 @@ $(function () {
             },
             geturlo:function () {
                 var obj=plus.getUrlObject('https://fayi2008.github.io/public/mindex.html?id=123&text=333')//不传参，则取当前URL
-                if(id){
+                if(obj){
                    console.log(obj)
                 }
             }
