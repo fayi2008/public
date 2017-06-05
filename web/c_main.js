@@ -19,7 +19,7 @@
 
     //不传参就是获取用户信息对象 传参获取单个用户信息
     $.getUser=window.getUser = function (rs) {
-        return rs ? JSON.parse(plus.base64decode(localStorage['yes']))[rs] : JSON.parse(plus.base64decode(localStorage['yes']))
+        return rs ? (localStorage['yes']?JSON.parse(plus.base64decode(localStorage['yes']))[rs]:''): (localStorage['yes']?JSON.parse(plus.base64decode(localStorage['yes'])):'')
     };
     //清楚ls
     $.clearUser =window.clearUser= function () {
