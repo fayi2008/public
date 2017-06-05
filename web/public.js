@@ -5,10 +5,10 @@
         define('plus', [], function () {
             return factory(golden);
         });
-    } else{
+    } else {
         window.plus = factory(golden)
-        if(jQuery){
-            window.$=$.extend(window.$,factory(golden))
+        if (jQuery) {
+            window.$ = $.extend(window.$, factory(golden))
         }
     }
 
@@ -48,7 +48,7 @@
             content: '',
             submit_text: '确定',
             cancel_text: '取消',
-            submit_bgcolor:'#fff',
+            submit_bgcolor: '#fff',
             submit_color: '#333',
             cancel_bgcolor: '#fff',
             cancel_color: '#333',
@@ -164,24 +164,24 @@
 
 
     //获取URL上参数
-    plus.getUrlParam  = function (name) {
+    plus.getUrlParam = function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]);
         return ''
     }
 
-    plus.getUrlObject=function (url) {
-        url=url||location.search
-        url=url.split('?')[1]||''
+    plus.getUrlObject = function (url) {
+        url = url || location.search
+        url = url.split('?')[1] || ''
 
-        if(url){
-           var list=url.split('&')
-            if(list&&list.length) {
-                var object={}
+        if (url) {
+            var list = url.split('&')
+            if (list && list.length) {
+                var object = {}
                 for (var i = 0; i < list.length; i++) {
                     var obj = list[i];
-                    object[obj.split('=')[0]]=obj.split('=')[1]
+                    object[obj.split('=')[0]] = obj.split('=')[1]
                 }
                 return object
             }
@@ -272,6 +272,55 @@
         words = words.toString(CryptoJS.enc.Utf8);
         return words
     }
+
+    plus.fdate = function (date, fmt) {
+        //date=new Date(dates);
+        //fmt=fmts||'yyyy-MM-dd hh:mm';
+        var o = {
+            "M+": date.getMonth() + 1,
+            //月份
+            "d+": date.getDate(),
+            //日
+            "h+": date.getHours() % 12 == 0 ? 12 : date.getHours() % 12,
+            //小时
+            "H+": date.getHours(),
+            //小时
+            "m+": date.getMinutes(),
+            //分
+            "s+": date.getSeconds(),
+            //秒
+            "q+": Math.floor((date.getMonth() + 3) / 3),
+            //季度
+            S: date.getMilliseconds()
+        };
+        var week = {
+            "0": "日",
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六"
+        };
+        if (/(y+)/.test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+        }
+        if (/(E+)/.test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length > 1 ? RegExp.$1.length > 2 ? "星期" : "周" : "") + week[date.getDay() + ""]);
+        }
+        for (var k in o) {
+            if (new RegExp("(" + k + ")").test(fmt)) {
+                fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+            }
+        }
+        return fmt;
+    };
+    Date.prototype.addDays = function (number) {
+        var adjustDate = new Date(this.getTime() + 24 * 60 * 60 * 1e3 * 30 * number);
+        //alert("Date" + adjustDate.getFullYear()+"-"+adjustDate.getMonth()+"-"+adjustDate.getDate());
+        return;
+    };
+
 
     return plus
 
