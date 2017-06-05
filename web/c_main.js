@@ -34,7 +34,7 @@
 
     //保存LStoken
     $.putToken =window.putToken= function (res) {
-        localStorage['yesToken'] = plus.base64encode(res.PhoneNumber + ':' + res.DynamicToken);
+        localStorage['yesToken'] = plus.base64encode(res.UserName + ':' + res.DynamicToken);
     };
     //检查是否登录，并且拼接head
     $.checkUser =window.checkUser= function () {

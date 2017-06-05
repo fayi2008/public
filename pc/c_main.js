@@ -39,7 +39,7 @@
     //保存LStoken
     $.putToken = window.putToken = function (rs) {
 
-        var res = plus.base64encode(rs.PhoneNumber + ':' + rs.DynamicToken);
+        var res = plus.base64encode(rs.UserName + ':' + rs.DynamicToken);
         Cookies.set('yesToken', res, {path: '/'})
     };
     //检查是否登录，并且拼接head
