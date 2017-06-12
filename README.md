@@ -29,7 +29,7 @@ web为手机端初始化部分JS
     swiper 版本 3.4
 
     public:一些简单的插件集合，可以兼容module，amd,普通模式调用
-            调用方法 例：  plus.alert('xxx')
+            调用方法 例：  plus.alert('xxx'), $.alert()均可
 
     c_main.js：.net项目需要用到的用户体系的方法，使用localstorge
 
