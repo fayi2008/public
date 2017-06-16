@@ -205,7 +205,9 @@
         function setFontSize() {
             var winWidth = document.documentElement.getBoundingClientRect().width;
             var fontSize = winWidth / designWidth * designFontSize;
-
+            if(fontSize>100){
+                fontSize=100
+            }
             html.style.fontSize = fontSize + 'px';
         }
 
@@ -272,7 +274,7 @@
         words = words.toString(CryptoJS.enc.Utf8);
         return words
     }
-
+    $.fdate(new Date(''),'yyyy-MM-dd E hh:mm')
     plus.fdate = function (date, fmt) {
         //date=new Date(dates);
         //fmt=fmts||'yyyy-MM-dd hh:mm';
