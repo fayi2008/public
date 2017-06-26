@@ -274,7 +274,7 @@
         words = words.toString(CryptoJS.enc.Utf8);
         return words
     }
-    $.fdate(new Date(''),'yyyy-MM-dd E hh:mm')
+    // $.fdate(new Date(''),'yyyy-MM-dd E hh:mm')
     plus.fdate = function (date, fmt) {
         //date=new Date(dates);
         //fmt=fmts||'yyyy-MM-dd hh:mm';
