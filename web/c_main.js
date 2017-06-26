@@ -40,7 +40,7 @@
     $.checkUser =window.checkUser= function () {
 
         if (plus.is_weixin()) {
-            var user = Cookies.getJSON('userInfo');
+            var user = Cookies.getJSON('userInfo')?decodeURIComponent(Cookies.getJSON('userInfo')):'';
             if (user) {
                 user = JSON.parse(plus.base64decode(user));
                 $.putUser(user);
