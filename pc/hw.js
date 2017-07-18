@@ -23,8 +23,8 @@ $.fn.roundimg = function (options) {
             img.onload = function () {
 
 
-                if (load === 1) {
-                    t.roundimg = 1;
+                if (load == 1) {
+                    roundimg = 1;
                     img.className = 'round-img-item show';
 
                 }
@@ -63,37 +63,59 @@ $.fn.roundimg = function (options) {
 
 
         function move(event) {
+            console.log('sta:'+sta)
             event.stopPropagation();
             event.preventDefault();
-            if (sta === 1) {
-                var news = {
-                    x: event.pageX,
-                    y: event.pageY
-                };
+            if (sta == 1) {
+
                 if (mobile) {
-                    news = {
+                    var news = {
                         x: event.originalEvent.touches[0].pageX,
                         y: event.originalEvent.touches[0].pageY
                     }
-                }
-
-
-                if (news.x - old.x > 2) {
-                    roundimg--;
-                    curxiang = 'left';
-                    if (roundimg <= 0) {
-                        roundimg = len - 1
-                    }
-                }
-
-                if (news.x - old.x < -2) {
-                    roundimg++;
-                    curxiang = 'right';
-                    if (roundimg >= len) {
-                        roundimg = 1
+                    if (news.x - old.x > 2) {
+                        roundimg--;
+                        curxiang = 'left';
+                        if (roundimg <= 0) {
+                            roundimg = len - 1
+                        }
                     }
 
+                    if (news.x - old.x < -2) {
+                        roundimg++;
+                        curxiang = 'right';
+                        if (roundimg >= len) {
+                            roundimg = 1
+                        }
+
+                    }
+                }else{
+                    var news = {
+                        x: event.pageX,
+                        y: event.pageY
+                    };
+                    if (news.x - old.x > 5) {
+                        roundimg--
+                        curxiang = 'left'
+                        if (roundimg <= 0) {
+                            roundimg = len - 1
+                        }
+
+                    }
+
+                    if (news.x - old.x < -5) {
+                        roundimg++
+                        curxiang = 'right'
+                        if (roundimg >= len) {
+                            roundimg = 1
+                        }
+
+                    }
+
                 }
+
+
+
 
                 setTimeout(function () {
 
@@ -154,7 +176,7 @@ $.fn.roundimg = function (options) {
         var eve={
             star: 'mousedown',
             move: 'mousemove',
-            end: 'mouseout'
+            end: 'mouseup'
         }
         if (mobile) {
             eve = {
@@ -165,9 +187,9 @@ $.fn.roundimg = function (options) {
         }
 
 
-        $t.off(eve.star).on(eve.star,start);
-        $t.off(eve.move).on(eve.move,move);
-        $t.off(eve.end).on(eve.end,end);
+        $t.off(eve.star).on(eve.star,function(event){console.log(111);start(event)});
+        $t.off(eve.move).on(eve.move,function(event){console.log(222);move(event)});
+        $t.off(eve.end).on(eve.end,function(event){end()});
     }
 
     new round()
