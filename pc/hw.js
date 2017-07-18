@@ -63,7 +63,7 @@ $.fn.roundimg = function (options) {
 
 
         function move(event) {
-            console.log('sta:'+sta)
+
             event.stopPropagation();
             event.preventDefault();
             if (sta == 1) {
@@ -187,8 +187,8 @@ $.fn.roundimg = function (options) {
         }
 
 
-        $t.off(eve.star).on(eve.star,function(event){console.log(111);start(event)});
-        $t.off(eve.move).on(eve.move,function(event){console.log(222);move(event)});
+        $t.off(eve.star).on(eve.star,function(event){start(event)});
+        $t.off(eve.move).on(eve.move,function(event){move(event)});
         $t.off(eve.end).on(eve.end,function(event){end()});
     }
 
