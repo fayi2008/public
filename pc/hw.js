@@ -8,13 +8,24 @@ $.fn.roundimg = function (options) {
         var u = navigator.userAgent
         var mobile = !!u.match(/AppleWebKit.*Mobile.*/);
         var option = {
-            image: []
+            image: [],
+            autoplay:false,
+            playbtn:false
         };
         var opt = $.extend(option, options);
 
         var load = 0;
         var len = opt.image.length;
+        var inss = 0;
+        var ttttt = 0;
+        var roundimg = 0;
+        var curxiang = 'left';
 
+        var htmls='<div class="round-img-box"></div>'
+        $t.css({
+            position: 'relative'
+        })
+        $t.append(htmls)
         function imgload() {
 
             var img = new Image();
@@ -28,7 +39,7 @@ $.fn.roundimg = function (options) {
                     img.className = 'round-img-item show';
 
                 }
-                $t.append(img);
+                $t.find('.round-img-box').append(img);
                 load++;
                 if (load < len) {
                     imgload();
@@ -40,7 +51,47 @@ $.fn.roundimg = function (options) {
 
         imgload();
 
-        var ttttt = 0, inss = 0;
+
+        function autoplay(){
+            inss = setInterval(function () {
+                $('.round-img-item:eq(' + roundimg + ')').addClass('show').siblings().removeClass('show')
+                roundimg++
+                if (roundimg > len) {
+                    roundimg = 1
+
+                }
+
+            }, 100)
+        }
+
+        function addbar() {
+            var html='<div class="round-img-play-bar"><div class="round-img-play-btn"></div></div>'
+            $t.append(html)
+            add()
+        }
+        function add() {
+            $t.off('click','.round-img-play-btn').on('click','.round-img-play-btn',function () {
+                var $tt=$(this)
+                if($tt.hasClass('r-i-p')){
+
+                    clearInterval(inss)
+                    $tt.removeClass('r-i-p')
+                }else{
+                    autoplay()
+                    $tt.addClass('r-i-p')
+                }
+            })
+        }
+
+        if(opt.autoplay){
+            autoplay()
+        }
+
+        if(opt.playbtn){
+            addbar()
+
+        }
+
         var index = 1,
             old = {
                 y: 0,
@@ -48,14 +99,19 @@ $.fn.roundimg = function (options) {
             };
 
         var sta = 0;
-        var roundimg = 0;
-        var curxiang = 'left';
+
 
         function start(event) {
 
 
             event.stopPropagation();
             event.preventDefault();
+            if(inss){
+                clearInterval(inss)
+                $('.round-img-play-btn').removeClass('r-i-p')
+            }
+
+
 
             sta = 1
 
@@ -142,34 +198,34 @@ $.fn.roundimg = function (options) {
         function end() {
 
 
-            if (sta === 1) {
-                var i = 0;
-
-                ttttt = setInterval(function () {
-
-                    if (curxiang === 'right') {
-                        roundimg++;
-                        if (roundimg >= len) {
-                            roundimg = 1
-                        }
-
-                    }
-                    if (curxiang === 'left') {
-                        roundimg--;
-                        if (roundimg <= 0) {
-                            roundimg = len - 1
-                        }
-
-                    }
-                    $('.round-img-item:eq(' + roundimg + ')').addClass('show').siblings().removeClass('show');
-                    if (i >= 12) {
-                        clearInterval(ttttt)
-                    }
-                    i++
-
-
-                }, 20)
-            }
+            // if (sta === 1) {
+            //     var i = 0;
+            //
+            //     ttttt = setInterval(function () {
+            //
+            //         if (curxiang === 'right') {
+            //             roundimg++;
+            //             if (roundimg >= len) {
+            //                 roundimg = 1
+            //             }
+            //
+            //         }
+            //         if (curxiang === 'left') {
+            //             roundimg--;
+            //             if (roundimg <= 0) {
+            //                 roundimg = len - 1
+            //             }
+            //
+            //         }
+            //         $('.round-img-item:eq(' + roundimg + ')').addClass('show').siblings().removeClass('show');
+            //         if (i >= 12) {
+            //             clearInterval(ttttt)
+            //         }
+            //         i++
+            //
+            //
+            //     }, 20)
+            // }
             sta = 0
         }
 
@@ -187,9 +243,9 @@ $.fn.roundimg = function (options) {
         }
 
 
-        $t.off(eve.star).on(eve.star,function(event){start(event)});
-        $t.off(eve.move).on(eve.move,function(event){move(event)});
-        $t.off(eve.end).on(eve.end,function(event){end()});
+        $t.find('.round-img-box').off(eve.star).on(eve.star,function(event){start(event)});
+        $t.find('.round-img-box').off(eve.move).on(eve.move,function(event){move(event)});
+        $t.find('.round-img-box').off(eve.end).on(eve.end,function(event){end()});
     }
 
     new round()
