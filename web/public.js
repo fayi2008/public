@@ -1,5 +1,6 @@
 ;(function (golden, factory) {
-    if (typeof module === "object" && typeof module.exports === "object") {
+    if (typeof module === "object") {
+        //export default  factory(golden);
         module.exports = factory(golden)
     } else if (typeof define === "function" && define.amd) {
         define('plus', [], function () {
@@ -323,6 +324,51 @@
         return;
     };
 
+    //计算距离
+    plus.computeDistance = function(p1, p2) {
+        var EARTH_RADIUS = 6378137.0 , PI = Math.PI , toRad = Math.PI / 180.0;
+
+        var lat1 = p1.lat * toRad;
+        var lat2 = p2.lat * toRad;
+
+        var deltaLon = (p2.lng - p1.lng) * toRad
+
+        return EARTH_RADIUS * Math.acos(
+            Math.sin(lat1) * Math.sin(lat2) +
+            Math.cos(lat1) * Math.cos(lat2) * Math.cos(deltaLon));
+    }
+
+    //计算方位角
+    plus.computeHeading = function(from , to){
+        var toRad = Math.PI / 180,toDeg = 180 / Math.PI;
+        var e=from.lat * toRad,
+            f=to.lat * toRad,
+            g=to.lng*toRad - from.lng * toRad;
+        var r = (Math.atan2(Math.sin(g)*Math.cos(f),Math.cos(e)*Math.sin(f)-Math.sin(e)*Math.cos(f)*Math.cos(g))) * toDeg;
+
+        if(r<0) r+=360;
+
+        return r;
+    }
+
+    //通过起始点坐标、距离以及航向算出终点坐标。
+    //from:LatLng, distance:Number, heading:Number, radius?:Number
+    //c,d,e,f
+    plus.computeOffset = function(from, dist, heading,radius) {
+        var toRad = Math.PI / 180 , toDeg = 180 / Math.PI;
+        var EARTH_RADIUS = 6378137;
+
+        var lat1 = from.lat * toRad;
+        var lng1 = from.lng * toRad;
+        var dByR = dist / (radius || EARTH_RADIUS);
+        var lat = Math.asin(
+            Math.sin(lat1) * Math.cos(dByR) +
+            Math.cos(lat1) * Math.sin(dByR) * Math.cos(heading));
+        var lng = lng1 + Math.atan2(
+            Math.sin(heading) * Math.sin(dByR) * Math.cos(lat1),
+            Math.cos(dByR) - Math.sin(lat1) * Math.sin(lat));
+        return {lat:lat * toDeg , lng : lng * toDeg};
+    }
 
     return plus
 
