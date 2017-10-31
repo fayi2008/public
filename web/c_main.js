@@ -118,5 +118,9 @@
 
     });
 
-
+    $.ajaxSetup({
+        headers: {
+            Platform:2
+        }
+    })
 })(jQuery);
