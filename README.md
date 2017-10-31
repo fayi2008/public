@@ -1,6 +1,7 @@
 2017.10.31更新
 
-   在2个c_main.js添加header Platform:2 （未测试）
+     在2个c_main.js添加header Platform:2 （未测试）
+
 
 2017.8.8更新
 
