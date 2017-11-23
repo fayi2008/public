@@ -6,9 +6,15 @@ $(function () {
         mounted: function () {
 
             plus.set_font()
-
+            this.test('hahha')
         },
         methods: {
+            test:function (a) {
+               var htm='<div>\
+                    <div>+a+</div>\
+                   </div>'
+                console.log(htm)
+            },
             addl: function () {
                 plus.ADDLOAD()//$.ADDLOAD()也可
                 setTimeout(function () {

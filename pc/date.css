@@ -1,0 +1,114 @@
+.y-date-box-alert-re{
+    position: relative;
+}
+.y-date-box{
+    width: 280px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+}
+.y-date-box-alert{
+    position: absolute;
+}
+.y-date-year-box{
+    display: flex;
+    justify-content:space-between;
+    width: 280px;
+}
+.y-date-year-box>div{
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+}
+
+.y-date-year-l,.y-date-year-r,.y-date-m-l,.y-date-m-r{
+    width: 30px;
+    cursor: pointer;
+}
+.y-date-week-box{
+    display: flex;
+    width: 280px;
+}
+.y-date-week{
+    display: flex;
+    flex: 0 30px;
+    height: 30px;
+    margin-right: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.y-date-day-box{
+    display: flex;
+    flex-wrap:wrap;
+    width: 280px;
+}
+.y-date-day{
+    display: flex;
+    flex: 0 30px;
+    height: 30px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+}
+.y-date-days-tips{
+    background-color: #67d8fd;
+}
+.y-date-days-not{
+    background-color: #cbcbcb;
+    cursor: auto;
+}
+.y-date-days-default{
+    background-color: #2e7ad6;
+}
+.y-date-change:after{
+    content: '';
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border: 2px solid red;
+    top:-4px;
+    left: -4px;
+    border-radius: 3px;
+}
+.y-date-now:before{
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #2e7ad6;
+    top:-2px;
+    left: -2px;
+    border-radius: 3px;
+}
+.y-date-time-box{
+    display: flex;
+    width: 280px;
+    justify-content: center;
+    align-items:center;
+    background-color: #fff;
+}
+.y-date-time-box>span,.y-date-time-box>select{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+
+}
+.y-date-time-box>select{
+    width: 40px;
+    text-align: center;
+    height: 20px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 0;
+}
+.y-date-today{
+
+}
+
+

@@ -1,4 +1,24 @@
 $(function () {
+    var aa=$.DateP({
+        el:'#date',
+        defaults:'2017-11-20',
+        max:'2018-2-15',
+        min:'2017-10-10',
+        tips: ['2017-11-21','2017-12-10','2017-12-11','2017-12-12','2017-12-13'],
+        not:['2017-11-21'],
+        getDays:function (day,ev) {
+            console.log(day,ev);
+
+        },
+        mchange:function (day,ev) {
+            aa.addtips('2017-12-15');
+            console.log(aa)
+        },
+        mchanged:function (day,ev) {
+           // console.log(aa)
+        }
+    });
+
     window.addl = function () {
         plus.ADDLOAD()//$.ADDLOAD()也可
         setTimeout(function () {

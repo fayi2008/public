@@ -1,6 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="content-language" content="zh-CN"/>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -15,44 +17,29 @@
 
     <title>test</title>
     <link rel="stylesheet" href="pc/public.css">
-    <link rel="stylesheet" href="pc/date.css">
     <style>
-        .list{
-            width: 300px;
-            border-bottom: 1px solid #999;
-        }
-        .list li{
-            margin: 15px;
-            text-align: center;
-            height: 40px;
-            line-height: 40px;
-            box-shadow: 0 0 1px #000;
-
+        canvas{
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            left: 0;
+            top:0;
         }
     </style>
     <script src="pc/dist.js"></script>
-    <script src="pc/date.js"></script>
     <script src="web/public.js"></script>
-
 </head>
 <body>
-<div id="main" class="pro-main">
-    <ul class="list">
-        <li onclick="addl()">添加load</li>
-
-    </ul>
-    <ul class="list">
-        <li onclick="alert1()">无取消按钮弹窗</li>
-        <li onclick="alert2()">有取消按钮弹窗</li>
-        <li onclick="oppo()">oppo</li>
-    </ul>
-    <ul class="list">
-        <li onclick="geturl()">获取URL单个参数</li>
-        <li onclick="geturlo()">获取URL完整参数对象</li>
-    </ul>
-
-    <div id="date"></div>
-</div>
-<script src="test/pc.js"></script>
+    <canvas id="cav" width="500" height="500"></canvas>
+    <script>
+        (function () {
+            var cav=document.getElementById('cav')
+            var ctx=cav.getContext("2d");
+            ctx.beginPath();
+            ctx.moveTo(20,200);
+            ctx.bezierCurveTo(20,400,100,20,200,200);
+            ctx.stroke();
+        })()
+    </script>
 </body>
 </html>
