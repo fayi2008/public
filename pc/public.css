@@ -58,11 +58,11 @@ body {
     position: relative;
     font-size: 14px;
     background-color: #eff0f7;
-    overflow-x: hidden;
-    min-height: 100%;
+    /*overflow-x: hidden;*/
+    /*min-height: 100%;*/
 }
 body,html{
-    min-height:100vh;
+    /*min-height:100vh;*/
 }
 input, select, textarea {
     -webkit-appearance: none;

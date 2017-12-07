@@ -1,5 +1,15 @@
 $(function () {
 
+    $.ajax({
+        url:'http://hz.chengmi.la/api/ads.php',
+        data:{
+            act:'index_carousel_ads'
+        },
+        dataType:'jsonp'
+    }).done(function (res) {
+        
+    })
+
     new Vue({
         el: '#main',
         data: {},
